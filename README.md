@@ -1,6 +1,8 @@
 # vue_sell
 
-> vue_sell app
+vue_sell app
+
+Vue.js学习
 
 ## Build Setup
 
