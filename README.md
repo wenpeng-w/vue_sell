@@ -2,28 +2,10 @@
 
 vue_sell app
 
-Vue.js学习
+Vue.js-1.0学习
 
-## Build Setup
+# 项目说明
 
-``` bash
-# install dependencies
-npm install
+Vue.js练习项目，仅用于Vue.js学习
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+ustbhuangyi老师的Vue.js项目实战课程， 课程学习地址：http://coding.imooc.com/class/74.html
