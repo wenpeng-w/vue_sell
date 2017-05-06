@@ -1,15 +1,16 @@
 <template>
-	<div class="goods">
-		<div class="menu-wrapper" v-el:menu-wrapper>
+	<div>
+		<div class="goods">
+		<div class="menu-wrapper" ref="menuWrapper">
 			<ul>
-				<li v-for="item in goods" v-bind:class="{'current':currentIndex===$index}" v-on:click="selectMenu($index,$event)" class="menu-item">
+				<li v-for="(item, index) in goods" v-bind:class="{'current':currentIndex===index}" v-on:click="selectMenu(index, $event)" class="menu-item">
 					<span class="text border-1px">
 						<span v-show="item.type>0" v-bind:class="classMap[item.type]" class="icon"></span>{{ item.name }}
 					</span>
 				</li>
 			</ul>
 		</div>
-		<div class="foods-wrapper" v-el:foods-wrapper>
+		<div class="foods-wrapper" ref="foodsWrapper">
 			<ul>
 				<li v-for="item in goods" class="food-list js-food-list">
 					<h2 class="title">{{ item.name }}</h2>
@@ -28,7 +29,7 @@
 									<span class="now">&yen;{{ food.price }}</span><span v-show="food.oldPrice" class="old">&yen;{{ food.oldPrice }}</span>
 								</div>
 								<div class="cartcontrol-wrapper">
-									<cartcontrol :food="food"></cartcontrol>
+									<cartcontrol v-on:add="addFood" :food="food"></cartcontrol>
 								</div>
 							</div>
 						</li>
@@ -36,9 +37,10 @@
 				</li>
 			</ul>
 		</div>
-		<shopcart v-ref:shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+		<shopcart ref="shopcart" :selectFoods="selectFoods" :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice"></shopcart>
 	</div>
-	<food :food="selectedFood" v-ref:food></food>
+	<food v-on:add="addFood" :food="selectedFood" ref="food"></food>
+	</div>
 </template>
 
 <script>
@@ -104,7 +106,7 @@
 				if (!event._constructed) {
 					return;
 				}
-				let foodList = this.$els.foodsWrapper.getElementsByClassName('js-food-list');
+				let foodList = this.$refs.foodsWrapper.getElementsByClassName('js-food-list');
 				let el = foodList[index];
 				this.foodsScroll.scrollToElement(el, 300);
 			},
@@ -115,6 +117,9 @@
 				this.selectedFood = food;
 				this.$refs.food.show();
 			},
+			addFood (target) {
+				this._drop(target);
+			},
 			_drop (target) {
 				// 体验优化，异步执行下落动画
 				this.$nextTick(() => {
@@ -122,10 +127,10 @@
 				});
 			},
 			_initScroll () {
-				this.menuScroll = new BScroll(this.$els.menuWrapper, {
+				this.menuScroll = new BScroll(this.$refs.menuWrapper, {
 					click: true
 				});
-				this.foodsScroll = new BScroll(this.$els.foodsWrapper, {
+				this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
 					click: true,
 					probeType: 3
 				});
@@ -134,7 +139,7 @@
 				});
 			},
 			_calculateHeight () {
-				let foodList = this.$els.foodsWrapper.getElementsByClassName('js-food-list');
+				let foodList = this.$refs.foodsWrapper.getElementsByClassName('js-food-list');
 				let height = 0;
 				this.listHeight.push(height);
 				for (let i = 0; i < foodList.length; i++) {
@@ -148,11 +153,6 @@
 			shopcart,
 			cartcontrol,
 			food
-		},
-		events: {
-			'cart.add' (target) {
-				this._drop(target);
-			}
 		}
 	};
 </script>

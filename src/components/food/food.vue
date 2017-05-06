@@ -1,5 +1,5 @@
 <template>
-	<div v-show="showFlag" class="food" v-el:food transition="move">
+	<div v-show="showFlag" class="food" ref="food" transition="move">
 		<div class="food-content">
 			<div class="image-header">
 				<img :src="food.image" />
@@ -17,7 +17,7 @@
 					<span class="now">&yen;{{ food.price }}</span><span v-show="food.oldPrice" class="old">&yen;{{ food.oldPrice }}</span>
 				</div>
 				<div class="cartcontrol-wrapper">
-					<cartcontrol :food="food"></cartcontrol>
+					<cartcontrol @add="addFood" :food="food"></cartcontrol>
 				</div>
 				<div v-on:click.stop.prevent="addFirst" v-show="!food.count || food.count === 0" class="buy" transition="fade">加入购物车</div>
 			</div>
@@ -29,7 +29,7 @@
 			<split></split>
 			<div class="rating">
 				<h2 class="title">商品评价</h2>
-				<ratingselect :select-type="selectType" :only-content="onlyContent" :desc="desc" :ratings="food.ratings"></ratingselect>
+				<ratingselect @select="selectRating" @toggle="toggleContent" :selectType="selectType" :onlyContent="onlyContent" :desc="desc" :ratings="food.ratings"></ratingselect>
 				<div class="rating-wrapper">
 					<ul v-show="food.ratings && food.ratings.length">
 						<li v-show="needShow(rating.rateType, rating.text)" v-for="rating in food.ratings" class="rating-item border-1px">
@@ -53,8 +53,8 @@
 	import Vue from 'vue';
 	import {formatDate} from 'common/js/date.js';
 	import cartcontrol from 'components/cartcontrol/cartcontrol.vue';
-	import ratingselect from 'components/ratingselect/ratingselect.vue';
 	import split from 'components/split/split.vue';
+	import ratingselect from 'components/ratingselect/ratingselect.vue';
 	
 	const ALL = 2;
 	
@@ -83,7 +83,7 @@
 				this.onlyContent = false;
 				this.$nextTick(() => {
 					if (!this.scroll) {
-						this.scroll = new BScroll(this.$els.food, {
+						this.scroll = new BScroll(this.$refs.food, {
 							click: true
 						});
 					} else {
@@ -98,8 +98,11 @@
 				if (!event._constructed) {
 					return;
 				}
-				this.$dispatch('cart.add', event.target);
+				this.$emit('add', event.target);
 				Vue.set(this.food, 'count', 1);
+			},
+			addFood (target) {
+				this.$emit('add', target);
 			},
 			needShow (type, text) {
 				if (this.onlyContent && !text) {
@@ -110,17 +113,15 @@
 				} else {
 					return type === this.selectType;
 				}
-			}
-		},
-		events: {
-			'ratingtype.select' (type) {
+			},
+			selectRating (type) {
 				this.selectType = type;
 				this.$nextTick(() => {
 					this.scroll.refresh();
 				});
 			},
-			'content.toggle' (onlyContent) {
-				this.onlyContent = onlyContent;
+			toggleContent () {
+				this.onlyContent = !this.onlyContent;
 				this.$nextTick(() => {
 					this.scroll.refresh();
 				});
@@ -134,8 +135,8 @@
 		},
 		components: {
 			cartcontrol,
-			ratingselect,
-			split
+			split,
+			ratingselect
 		}
 	};
 </script>
@@ -250,7 +251,6 @@
 	.food-content .buy.fade-enter,
 	.food-content .buy.fade-leave {
 		opacity: 0;
-		z-index: -1;
 	}
 	.food-content .info {
 		padding: 18px;
