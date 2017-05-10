@@ -2,20 +2,21 @@
   <div>
   	<v-header v-bind:seller="seller"></v-header>
   	<div class="tab border-1px">
-  		<div class="tab-item"><a v-link="{path:'/goods'}">商品</a></div>
-  		<div class="tab-item"><a v-link="{path:'/ratings'}">评论</a></div>
-  		<div class="tab-item"><a v-link="{path:'/seller'}">商家</a></div>
+  		<div class="tab-item"><router-link to="/goods">商品</router-link></div>
+  		<div class="tab-item"><router-link to="/ratings">评论</router-link></div>
+  		<div class="tab-item"><router-link to="/seller">商家</router-link></div>
   	</div>
-  	<router-view :seller="seller" keep-alive></router-view>
+  	<keep-alive>
+  		<router-view :seller="seller"></router-view>
+  	</keep-alive>
   </div>
 </template>
 
 <script>
 	import {urlParse} from 'common/js/util.js';
 	import header from 'components/header/header.vue';
-	import data from '../../data.json';
 	
-//	const ERR_OK = 0;
+	const ERR_OK = 0;
 	
 	export default {
 		data () {
@@ -29,13 +30,13 @@
 			};
 		},
 		created () {
-//			this.$http.get('/api/seller?id=' + this.seller.id).then((response) => {
-//				response = response.body;
-//				if (response.errno === ERR_OK) {
-//					this.seller = Object.assign({}, this.seller, response.data);
-//				}
-//			});
-			this.seller = data.seller;
+			this.$http.get('/api/seller?id=' + this.seller.id).then((response) => {
+				response = response.body;
+				if (response.errno === ERR_OK) {
+					// this.seller = response.data;
+					this.seller = Object.assign({}, this.seller, response.data);
+				}
+			});
 		},
 		components: {
 			'v-header': header
