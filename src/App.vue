@@ -13,7 +13,7 @@
 <script>
 	import {urlParse} from 'common/js/util.js';
 	import header from 'components/header/header.vue';
-	import data from '../data.json';
+	import data from '../../data.json';
 	
 //	const ERR_OK = 0;
 	
