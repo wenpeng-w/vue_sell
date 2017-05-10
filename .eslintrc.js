@@ -22,6 +22,5 @@ module.exports = {
     "indent": 0,
     "no-tabs": 0,
     "eol-last": 2
-
   }
 }
