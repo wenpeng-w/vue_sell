@@ -15,7 +15,7 @@
 	import header from 'components/header/header.vue';
 	import data from '../data.json';
 	
-	const ERR_OK = 0;
+//	const ERR_OK = 0;
 	
 	export default {
 		data () {
@@ -29,13 +29,13 @@
 			};
 		},
 		created () {
-			this.$http.get('/api/seller?id=' + this.seller.id).then((response) => {
-				response = response.body;
-				if (response.errno === ERR_OK) {
+//			this.$http.get('/api/seller?id=' + this.seller.id).then((response) => {
+//				response = response.body;
+//				if (response.errno === ERR_OK) {
 //					this.seller = Object.assign({}, this.seller, response.data);
-						this.seller = data.seller;
-				}
-			});
+//				}
+//			});
+			this.seller = data.seller;
 		},
 		components: {
 			'v-header': header
