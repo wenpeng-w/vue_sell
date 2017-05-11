@@ -15,7 +15,6 @@
 <script>
 	import {urlParse} from 'common/js/util.js';
 	import header from 'components/header/header.vue';
-	import data from 'common/data.json';
 	
 //	const ERR_OK = 0;
 	
@@ -38,7 +37,9 @@
 //					this.seller = Object.assign({}, this.seller, response.data);
 //				}
 //			});
-				this.seller = data.seller;
+				this.$http.get('static/data.json').then((response) => {
+					this.seller = response.data.seller;
+				});
 		},
 		components: {
 			'v-header': header
