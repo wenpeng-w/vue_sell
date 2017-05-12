@@ -16,7 +16,7 @@ let routes = [
 		path: '/',
 		component: goods
 	},
-  {
+	{
 		path: '/goods',
 		component: goods
 	},

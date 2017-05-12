@@ -40,8 +40,8 @@
 				this.$http.get('static/data.json').then((response) => {
 					if (response.errno === ERR_OK) {
 						this.seller = response.data.seller;
-					});
-				}
+					}
+				});
 		},
 		components: {
 			'v-header': header
