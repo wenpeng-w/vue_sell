@@ -49,7 +49,7 @@
 	import cartcontrol from 'components/cartcontrol/cartcontrol.vue';
 	import food from 'components/food/food.vue';
 	
-	const ERR_OK = 0;
+//	const ERR_OK = 0;
 	
 	export default {
 		props: {
@@ -101,9 +101,11 @@
 //				}
 //			});
 			this.$http.get('static/data.json').then((response) => {
-				if (response.errno === ERR_OK) {
-					this.seller = response.data.goods;
-				}
+				this.seller = response.data.goods;
+				this.$nextTick(() => {
+					this._initScroll();
+					this._calculateHeight();
+				});
 			});
 		},
 		methods: {
