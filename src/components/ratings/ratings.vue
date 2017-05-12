@@ -88,7 +88,7 @@
 //				}
 //			});
 			this.$http.get('static/data.json').then((response) => {
-				this.seller = response.data.ratings;
+				this.ratings = response.data.ratings;
 				this.$nextTick(() => {
 					this.scroll = new BScroll(this.$refs.ratings, {
 						click: true

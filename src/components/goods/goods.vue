@@ -101,7 +101,7 @@
 //				}
 //			});
 			this.$http.get('static/data.json').then((response) => {
-				this.seller = response.data.goods;
+				this.goods = response.data.goods;
 				this.$nextTick(() => {
 					this._initScroll();
 					this._calculateHeight();
