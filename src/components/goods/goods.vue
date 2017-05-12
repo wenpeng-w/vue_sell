@@ -90,16 +90,21 @@
 		},
 		created () {
 			this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
-			this.$http.get('/api/goods').then((response) => {
-				response = response.body;
+//			this.$http.get('/api/goods').then((response) => {
+//				response = response.body;
+//				if (response.errno === ERR_OK) {
+//					this.goods = response.data;
+//					this.$nextTick(() => {
+//						this._initScroll();
+//						this._calculateHeight();
+//					});
+//				}
+//			});
+			this.$http.get('static/data.json').then((response) => {
 				if (response.errno === ERR_OK) {
-					this.goods = response.data;
-					this.$nextTick(() => {
-						this._initScroll();
-						this._calculateHeight();
-					});
-				}
-			});
+					this.seller = response.data.goods;
+				});
+			}
 		},
 		methods: {
 			selectMenu (index, event) {

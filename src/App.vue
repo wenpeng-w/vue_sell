@@ -16,7 +16,7 @@
 	import {urlParse} from 'common/js/util.js';
 	import header from 'components/header/header.vue';
 	
-//	const ERR_OK = 0;
+	const ERR_OK = 0;
 	
 	export default {
 		data () {
@@ -38,8 +38,10 @@
 //				}
 //			});
 				this.$http.get('static/data.json').then((response) => {
-					this.seller = response.data.seller;
-				});
+					if (response.errno === ERR_OK) {
+						this.seller = response.data.seller;
+					});
+				}
 		},
 		components: {
 			'v-header': header
