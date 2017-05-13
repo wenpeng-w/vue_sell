@@ -16,10 +16,10 @@
 
 ## 项目截图
 
-![eleme_sell_01](http://img.hb.aicdn.com/48bf314f61d9196d554da3ce01202be0f99ea37f284a5-EKfdPo_fw658)
+![eleme_sell_01](http://img.hb.aicdn.com/363a22cafb899a7806120bace5af7cde1f70d43a14e19-sEJS2X_fw658)
 ![eleme_sell_02](http://img.hb.aicdn.com/7f100b979d819868d5b279c3794064fb48f5aab412d39-DVNAjU_fw658)
 ![eleme_sell_03](http://img.hb.aicdn.com/4616817cc169645a6c72f599b14c67a26f79e9fe16c3a-PjPvn6_fw658)
-![eleme_sell_04](http://img.hb.aicdn.com/6467cfd4935f18a0bcb8dac8670d1a6cd696b9e427e2b-AT5nPb_fw658)
+![eleme_sell_04](http://img.hb.aicdn.com/8a4192a4f5a5e97c48ed5516688d2d1825daa91515d12-rpueid_fw658)
 
 ## Build Setup
 
