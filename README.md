@@ -33,6 +33,6 @@ npm run dev
 npm run build
 
 ```
-## ===================================
+## 
 
-  分享一下Vue.js的学习地址，Ustbhuangyi的课程实战项目，http://coding.imooc.com/class/74.html
+  分享一下Vuejs的学习地址，Ustbhuangyi的vue实战项目课程，http://coding.imooc.com/class/74.html
