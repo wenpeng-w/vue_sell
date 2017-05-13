@@ -1,6 +1,15 @@
-# vue_sell
+# eleme_sell
 
-> vue_sell app
+> 使用Vue.js2.0开发项目，从Vue1.0到Vue2.0的升级，到项目的打包部署，学习开发期间踩了太多的坑。
+
+# 项目技术
+
+> vue-cli  vue2.0  vue-router  vue-resource better-scroll webpack
+
+# 在线演示
+
+在线显示地址： http://vuejs.womenl.cn/#/goods 
+
 
 ## Build Setup
 
