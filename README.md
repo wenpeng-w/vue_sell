@@ -19,7 +19,6 @@
 ![eleme_sell_01](http://img.hb.aicdn.com/363a22cafb899a7806120bace5af7cde1f70d43a14e19-sEJS2X_fw658)
 ![eleme_sell_02](http://img.hb.aicdn.com/7f100b979d819868d5b279c3794064fb48f5aab412d39-DVNAjU_fw658)
 ![eleme_sell_03](http://img.hb.aicdn.com/4616817cc169645a6c72f599b14c67a26f79e9fe16c3a-PjPvn6_fw658)
-![eleme_sell_04](http://img.hb.aicdn.com/8a4192a4f5a5e97c48ed5516688d2d1825daa91515d12-rpueid_fw658)
 
 ## Build Setup
 
@@ -33,14 +32,7 @@ npm run dev
 # build for production with minification
 npm run build
 
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
+## ==========================================================================================================
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+  分享一下Vue.js的学习地址，Ustbhuangyi的课程实战项目，http://coding.imooc.com/class/74.html
