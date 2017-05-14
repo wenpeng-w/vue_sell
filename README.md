@@ -35,4 +35,4 @@ npm run build
 ```
 ## 
 
-  分享一下Vuejs的学习地址，Ustbhuangyi的vue实战项目课程，http://coding.imooc.com/class/74.html
+  分享Vuejs的学习地址，@Ustbhuangyi的vue实战项目课程，http://coding.imooc.com/class/74.html
